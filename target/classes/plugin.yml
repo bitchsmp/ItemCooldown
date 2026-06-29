@@ -1,0 +1,19 @@
+name: ItemCooldown
+version: 1.0.0
+main: com.github.itemcooldown.ItemCooldownPlugin
+api-version: '1.21'
+description: Configure material and custom model cooldowns upon item consumption.
+authors: [Antigravity]
+commands:
+  itemcooldown:
+    description: ItemCooldown commands.
+    usage: /itemcooldown [reload|list]
+    permission: itemcooldown.admin
+    aliases: [ic]
+permissions:
+  itemcooldown.admin:
+    description: Allows reloading and listing item cooldowns.
+    default: op
+  itemcooldown.bypass:
+    description: Allows bypassing all configured item cooldowns.
+    default: false

@@ -1,0 +1,44 @@
+# ==============================================================================
+# ItemCooldown Configuration
+# ==============================================================================
+
+# The action bar message shown to players when they attempt to use/eat an item on custom cooldown.
+# Use %time% for the remaining time in seconds (formatted to one decimal place, e.g. "2.5s").
+# Supports standard Minecraft color codes using '&'.
+action-bar-message: "&cThis item is on cooldown! &e%time%s &cleft."
+
+# Configure item cooldowns.
+#
+# Each entry in the list can have the following properties:
+#   - material: The Minecraft Material enum name (required, uppercase).
+#               See: https://jd.papermc.io/paper/1.21.1/org/bukkit/Material.html
+#   - item_model: The NamespacedKey representing the custom item model component (optional).
+#                 E.g. "dueris:half_golden_apple". If specified, this rule will only match
+#                 items of the specified material that have this custom model key.
+#   - ticks: The duration of the cooldown in ticks (required).
+#            20 ticks = 1 second. For example, 6000 ticks is 5 minutes.
+#   - use_native: Whether to use Minecraft's native item cooldown system (optional).
+#                 - true (default if item_model is NOT set): Uses Minecraft's built-in cooldown tracker.
+#                   This displays a grey sweeping overlay on the hotbar. Note that this applies
+#                   to the ENTIRE material (so all paper items would get it, not just custom ones).
+#                 - false (default if item_model IS set): Uses the plugin's custom cooldown tracker.
+#                   No hotbar overlay is shown, but usage/eating is blocked server-side, and
+#                   the action bar message above is displayed.
+#
+# Specific rules (with item_model) are evaluated first. Generic material-only rules act as fallbacks.
+cooldowns:
+  # Native cooldown for Enchanted Golden Apple (6000 ticks = 5 minutes)
+  - material: ENCHANTED_GOLDEN_APPLE
+    ticks: 6000
+    use_native: true
+
+  # Native cooldown for standard Golden Apple (1200 ticks = 60 seconds)
+  - material: GOLDEN_APPLE
+    ticks: 1200
+    use_native: true
+
+  # Custom cooldown for a custom paper item (6000 ticks = 5 minutes)
+  - material: PAPER
+    item_model: "dueris:half_golden_apple"
+    ticks: 6000
+    use_native: false

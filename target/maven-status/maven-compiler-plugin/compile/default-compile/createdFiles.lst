@@ -1,0 +1,4 @@
+com\github\itemcooldown\CooldownRule.class
+com\github\itemcooldown\ItemCooldownPlugin.class
+com\github\itemcooldown\CooldownListener.class
+com\github\itemcooldown\ItemCooldownCommand.class
